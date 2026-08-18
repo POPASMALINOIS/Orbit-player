@@ -21,7 +21,7 @@ La versión `0.1.0` incluye un primer prototipo funcional:
 ## Requisitos
 
 - macOS compatible con una versión moderna de Xcode;
-- Xcode 16 o posterior;
+- una versión de Xcode compatible con iOS 17 o posterior;
 - iOS 17 o posterior;
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) para generar el proyecto de Xcode.
 
@@ -72,4 +72,4 @@ OrbitPlayer/
 
 ## Propiedad
 
-Proyecto privado de desarrollo de Orbit Player. No se concede licencia de reutilización, distribución o explotación a terceros.
+Orbit Player es un proyecto de titularidad privada y vocación comercial. La publicación del código en este repositorio no concede licencia de reutilización, distribución o explotación a terceros.
