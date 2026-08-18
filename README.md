@@ -13,7 +13,7 @@ La versión `0.1.0` incluye un primer prototipo funcional:
 - copia segura de los archivos a la biblioteca privada de la aplicación;
 - reproducción con `AVPlayer`;
 - reproducción de audio en segundo plano;
-- controles desde la pantalla bloqueada, el Centro de control y auriculares;
+- publicación de título, artista, duración y progreso en el sistema;
 - favoritos persistentes;
 - reproductor de vídeo a pantalla completa;
 - compilación automática en GitHub Actions.
@@ -66,6 +66,7 @@ OrbitPlayer/
 - lectura de metadatos y carátulas reales;
 - listas de reproducción;
 - búsqueda y ordenación;
+- controles remotos desde pantalla bloqueada, Centro de control y auriculares;
 - control de orientación para vídeo;
 - AirPlay y selector de ruta;
 - pruebas en dispositivo y distribución mediante TestFlight.

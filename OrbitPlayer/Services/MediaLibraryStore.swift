@@ -25,12 +25,14 @@ final class MediaLibraryStore: ObservableObject {
             .appendingPathComponent("OrbitPlayerLibrary", isDirectory: true)
         self.indexURL = libraryDirectory.appendingPathComponent("library.json")
 
-        self.encoder = JSONEncoder()
-        self.encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        self.encoder.dateEncodingStrategy = .iso8601
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+        self.encoder = encoder
 
-        self.decoder = JSONDecoder()
-        self.decoder.dateDecodingStrategy = .iso8601
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        self.decoder = decoder
 
         prepareDirectory()
         loadIndex()

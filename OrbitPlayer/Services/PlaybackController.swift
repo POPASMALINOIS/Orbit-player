@@ -25,22 +25,12 @@ final class PlaybackController: ObservableObject {
     private var URLsByID: [UUID: URL] = [:]
     private var timeObserver: Any?
     private var endObserver: NSObjectProtocol?
-    private var cancellables = Set<AnyCancellable>()
 
     init() {
         player.volume = volume
         configureAudioSession()
         configureObservers()
         configureRemoteCommands()
-    }
-
-    deinit {
-        if let timeObserver {
-            player.removeTimeObserver(timeObserver)
-        }
-        if let endObserver {
-            NotificationCenter.default.removeObserver(endObserver)
-        }
     }
 
     func play(
@@ -57,10 +47,14 @@ final class PlaybackController: ObservableObject {
         guard player.currentItem != nil else { return }
         try? AVAudioSession.sharedInstance().setActive(true)
         player.play()
+        isPlaying = true
+        updateNowPlayingInfo()
     }
 
     func pause() {
         player.pause()
+        isPlaying = false
+        updateNowPlayingInfo()
     }
 
     func togglePlayback() {
@@ -142,10 +136,10 @@ final class PlaybackController: ObservableObject {
             forInterval: interval,
             queue: .main
         ) { [weak self] time in
-            Task { @MainActor in
+            let seconds = time.seconds
+            Task { @MainActor [weak self, seconds] in
                 guard let self else { return }
 
-                let seconds = time.seconds
                 self.elapsed = seconds.isFinite && seconds >= 0 ? seconds : 0
 
                 if let itemDuration = self.player.currentItem?.duration.seconds,
@@ -157,15 +151,6 @@ final class PlaybackController: ObservableObject {
                 self.updateNowPlayingInfo()
             }
         }
-
-        player.publisher(for: \.timeControlStatus)
-            .receive(on: RunLoop.main)
-            .sink { [weak self] status in
-                guard let self else { return }
-                self.isPlaying = status == .playing
-                self.updateNowPlayingInfo()
-            }
-            .store(in: &cancellables)
 
         endObserver = NotificationCenter.default.addObserver(
             forName: .AVPlayerItemDidPlayToEndTime,
@@ -217,7 +202,10 @@ final class PlaybackController: ObservableObject {
             guard let event = event as? MPChangePlaybackPositionCommandEvent else {
                 return .commandFailed
             }
-            Task { @MainActor in self?.seek(to: event.positionTime) }
+            let positionTime = event.positionTime
+            Task { @MainActor [weak self, positionTime] in
+                self?.seek(to: positionTime)
+            }
             return .success
         }
     }

@@ -28,13 +28,15 @@ struct HomeMenuEntry: Identifiable, Equatable, Sendable {
     let title: String
     let systemImage: String
 
-    static let all: [HomeMenuEntry] = [
-        .init(id: .music, title: "Música", systemImage: "music.note"),
-        .init(id: .videos, title: "Vídeos", systemImage: "film"),
-        .init(id: .nowPlaying, title: "Ahora suena", systemImage: "play.circle"),
-        .init(id: .favorites, title: "Favoritos", systemImage: "heart"),
-        .init(id: .settings, title: "Ajustes", systemImage: "slider.horizontal.3")
-    ]
+    static var all: [HomeMenuEntry] {
+        [
+            .init(id: .music, title: "Música", systemImage: "music.note"),
+            .init(id: .videos, title: "Vídeos", systemImage: "film"),
+            .init(id: .nowPlaying, title: "Ahora suena", systemImage: "play.circle"),
+            .init(id: .favorites, title: "Favoritos", systemImage: "heart"),
+            .init(id: .settings, title: "Ajustes", systemImage: "slider.horizontal.3")
+        ]
+    }
 }
 
 struct SettingsMenuEntry: Identifiable, Equatable, Sendable {
@@ -48,9 +50,11 @@ struct SettingsMenuEntry: Identifiable, Equatable, Sendable {
     let title: String
     let systemImage: String
 
-    static let all: [SettingsMenuEntry] = [
-        .init(id: .importAudio, title: "Importar música", systemImage: "music.note.list"),
-        .init(id: .importVideo, title: "Importar vídeos", systemImage: "video.badge.plus"),
-        .init(id: .about, title: "Acerca de Orbit Player", systemImage: "info.circle")
-    ]
+    static var all: [SettingsMenuEntry] {
+        [
+            .init(id: .importAudio, title: "Importar música", systemImage: "music.note.list"),
+            .init(id: .importVideo, title: "Importar vídeos", systemImage: "video.badge.plus"),
+            .init(id: .about, title: "Acerca de Orbit Player", systemImage: "info.circle")
+        ]
+    }
 }
