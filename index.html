@@ -4,12 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
   <meta name="theme-color" content="#101218">
+  <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Orbit Player">
-  <title>Orbit Player — Preview</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.css">
+  <title>Orbit Player</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=2026.08.19.2">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=2026.08.19.2">
 </head>
 <body>
   <main class="app-shell" aria-label="Orbit Player">
@@ -26,7 +28,7 @@
       <header class="display-header">
         <div>
           <h1 id="screenTitle">Orbit Player</h1>
-          <p id="screenSubtitle">Biblioteca de demostración</p>
+          <p id="screenSubtitle">Cargando biblioteca…</p>
         </div>
         <div class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       </header>
@@ -47,7 +49,13 @@
     </section>
   </main>
 
-  <input id="mediaInput" type="file" accept="audio/*,video/*" multiple hidden>
+  <input
+    id="mediaInput"
+    type="file"
+    accept="audio/*,video/*,.mp3,.m4a,.aac,.wav,.aif,.aiff,.caf,.flac,.ogg,.opus,.mp4,.m4v,.mov,.webm"
+    multiple
+    hidden
+  >
   <audio id="audioPlayer" preload="metadata"></audio>
   <video id="videoPlayer" preload="metadata" playsinline hidden></video>
 
@@ -66,10 +74,10 @@
     <button id="closeInfo" type="button" aria-label="Cerrar">×</button>
     <div class="brand-mark large" aria-hidden="true"><span></span></div>
     <h2>Orbit Player</h2>
-    <p>Vista previa táctil del reproductor nativo para iPhone.</p>
-    <p class="muted">Los archivos se reproducen localmente y no se suben a ningún servidor.</p>
+    <p>PWA personal para reproducir música y vídeos guardados en tu iPhone.</p>
+    <p class="muted">Los archivos se guardan localmente mediante IndexedDB y no se envían a GitHub ni a ningún servidor.</p>
   </dialog>
 
-  <script src="app.js" defer></script>
+  <script src="./app.js?v=2026.08.19.2" defer></script>
 </body>
 </html>

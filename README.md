@@ -1,76 +1,32 @@
-# Orbit Player
+# Orbit Player — PWA personal
 
-Orbit Player es un reproductor multimedia nativo para iPhone con una interfaz radial inspirada en la experiencia de los reproductores clásicos, pero con diseño, marca e interacción propios.
+Esta carpeta contiene la versión principal de Orbit Player. Es una PWA instalable en iPhone y está pensada para uso personal.
 
-## Estado actual
+## Funciones actuales
 
-La versión `0.1.0` incluye un primer prototipo funcional:
-
-- interfaz SwiftUI adaptable a distintos tamaños de iPhone;
-- rueda táctil circular con desplazamiento angular y respuesta háptica;
-- navegación por Música, Vídeos, Ahora suena, Favoritos y Ajustes;
-- importación de archivos de audio y vídeo desde la app Archivos;
-- copia segura de los archivos a la biblioteca privada de la aplicación;
-- reproducción con `AVPlayer`;
-- reproducción de audio en segundo plano;
-- publicación de título, artista, duración y progreso en el sistema;
+- navegación circular mediante la rueda táctil;
+- importación de MP3 y otros archivos de audio desde Archivos;
+- detección por extensión cuando iOS no proporciona el tipo MIME;
+- reproducción local de audio y vídeo;
+- biblioteca persistente en IndexedDB;
 - favoritos persistentes;
-- reproductor de vídeo a pantalla completa;
-- compilación automática en GitHub Actions.
+- recuperación de la biblioteca al volver a abrir la PWA;
+- instalación desde Safari mediante **Añadir a pantalla de inicio**;
+- funcionamiento sin conexión después de la primera carga;
+- controles de reproducción mediante la rueda;
+- metadatos básicos en Media Session cuando el navegador los admite.
 
-## Requisitos
+## Privacidad
 
-- macOS compatible con una versión moderna de Xcode;
-- una versión de Xcode compatible con iOS 17 o posterior;
-- iOS 17 o posterior;
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) para generar el proyecto de Xcode.
+Los archivos se guardan únicamente en el almacenamiento local del navegador del dispositivo. No se transmiten a GitHub ni a ningún servidor.
 
-## Abrir el proyecto
+## Instalación en iPhone
 
-```bash
-brew install xcodegen
-./Scripts/bootstrap.sh
-```
+1. Abre Orbit Player en Safari.
+2. Pulsa **Compartir**.
+3. Selecciona **Añadir a pantalla de inicio**.
+4. Abre la aplicación desde el icono instalado.
 
-El script genera `OrbitPlayer.xcodeproj` y lo abre en Xcode.
+## Limitaciones de iOS
 
-También se puede ejecutar manualmente:
-
-```bash
-xcodegen generate
-open OrbitPlayer.xcodeproj
-```
-
-## Probar en iPhone
-
-1. Abre el proyecto en Xcode.
-2. Selecciona el equipo de desarrollo en **Signing & Capabilities**.
-3. Conecta el iPhone o selecciona un simulador.
-4. Ejecuta el esquema **OrbitPlayer**.
-5. Pulsa `+` para importar música o vídeos desde Archivos.
-
-## Estructura
-
-```text
-OrbitPlayer/
-├── Models/          Modelos de biblioteca y navegación
-├── Services/        Importación, persistencia y reproducción
-├── Utilities/       Tema visual y cálculo de la rueda
-├── Views/           Interfaz principal, pantalla y rueda
-└── Resources/       Info.plist y catálogo de recursos
-```
-
-## Próximas fases
-
-- integración con Apple Music mediante MusicKit;
-- lectura de metadatos y carátulas reales;
-- listas de reproducción;
-- búsqueda y ordenación;
-- controles remotos desde pantalla bloqueada, Centro de control y auriculares;
-- control de orientación para vídeo;
-- AirPlay y selector de ruta;
-- pruebas en dispositivo y distribución mediante TestFlight.
-
-## Propiedad
-
-Orbit Player es un proyecto de titularidad privada y vocación comercial. La publicación del código en este repositorio no concede licencia de reutilización, distribución o explotación a terceros.
+La reproducción debe iniciarse mediante una pulsación del usuario. El sistema puede controlar el volumen desde los botones físicos aunque Safari ignore cambios de volumen hechos por JavaScript. El almacenamiento local puede ser eliminado por iOS si el dispositivo necesita espacio.

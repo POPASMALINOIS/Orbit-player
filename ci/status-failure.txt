@@ -1,4 +1,0 @@
-La compilación ha fallado.
-
-/Users/runner/work/Orbit-player/Orbit-player/OrbitPlayer/Resources/Assets.xcassets: error: The stickers icon set or app icon set named "AppIcon" did not have any applicable content.
-** BUILD FAILED **
