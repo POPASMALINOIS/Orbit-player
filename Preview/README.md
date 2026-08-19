@@ -1,22 +1,32 @@
-# Orbit Player — Vista previa táctil
+# Orbit Player — PWA personal
 
-Esta carpeta contiene una demostración web instalable para validar en iPhone la interfaz y la rueda de control antes de distribuir la aplicación nativa mediante TestFlight.
+Esta carpeta contiene la versión principal de Orbit Player. Es una PWA instalable en iPhone y está pensada para uso personal.
 
-## Qué permite probar
+## Funciones actuales
 
-- navegación circular por los menús;
-- selección mediante el botón central;
-- botones de menú, anterior, siguiente y reproducción;
-- importación temporal de archivos de audio y vídeo;
-- reproducción local en el navegador;
-- favoritos durante la sesión;
+- navegación circular mediante la rueda táctil;
+- importación de MP3 y otros archivos de audio desde Archivos;
+- detección por extensión cuando iOS no proporciona el tipo MIME;
+- reproducción local de audio y vídeo;
+- biblioteca persistente en IndexedDB;
+- favoritos persistentes;
+- recuperación de la biblioteca al volver a abrir la PWA;
 - instalación desde Safari mediante **Añadir a pantalla de inicio**;
-- funcionamiento sin conexión después de la primera carga.
+- funcionamiento sin conexión después de la primera carga;
+- controles de reproducción mediante la rueda;
+- metadatos básicos en Media Session cuando el navegador los admite.
 
 ## Privacidad
 
-Los archivos elegidos por el usuario no se transmiten a GitHub ni a ningún servidor. El navegador crea referencias locales temporales y las elimina al cerrar o recargar la vista previa.
+Los archivos se guardan únicamente en el almacenamiento local del navegador del dispositivo. No se transmiten a GitHub ni a ningún servidor.
 
-## Diferencia respecto de la app nativa
+## Instalación en iPhone
 
-La vista previa sirve para comprobar el diseño y la interacción. No sustituye a la aplicación SwiftUI: la respuesta háptica real, MusicKit, la biblioteca persistente y la integración completa con iOS pertenecen al proyecto nativo.
+1. Abre Orbit Player en Safari.
+2. Pulsa **Compartir**.
+3. Selecciona **Añadir a pantalla de inicio**.
+4. Abre la aplicación desde el icono instalado.
+
+## Limitaciones de iOS
+
+La reproducción debe iniciarse mediante una pulsación del usuario. El sistema puede controlar el volumen desde los botones físicos aunque Safari ignore cambios de volumen hechos por JavaScript. El almacenamiento local puede ser eliminado por iOS si el dispositivo necesita espacio.
