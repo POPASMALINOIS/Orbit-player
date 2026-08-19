@@ -1,14 +1,16 @@
 {
-  "name": "Orbit Player Preview",
+  "id": "./",
+  "name": "Orbit Player",
   "short_name": "Orbit Player",
-  "description": "Vista previa táctil del reproductor radial Orbit Player.",
+  "description": "Reproductor multimedia personal con rueda radial para iPhone.",
   "lang": "es",
-  "start_url": "./",
+  "start_url": "./?pwa=2026.08.19.2",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#050609",
   "theme_color": "#101218",
+  "categories": ["music", "entertainment", "utilities"],
   "icons": [
     {
       "src": "icon.svg",
