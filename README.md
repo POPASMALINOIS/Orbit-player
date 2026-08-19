@@ -1,76 +1,49 @@
 # Orbit Player
 
-Orbit Player es un reproductor multimedia nativo para iPhone con una interfaz radial inspirada en la experiencia de los reproductores clásicos, pero con diseño, marca e interacción propios.
+Orbit Player es una **PWA personal para iPhone** con una interfaz radial inspirada en la experiencia de los reproductores clásicos, pero con diseño e identidad propios.
 
-## Estado actual
+## Enfoque del proyecto
 
-La versión `0.1.0` incluye un primer prototipo funcional:
+La PWA es la versión principal y la que se seguirá desarrollando. No está planteada para comercialización ni para la App Store; su objetivo es proporcionar un reproductor cómodo para uso personal.
 
-- interfaz SwiftUI adaptable a distintos tamaños de iPhone;
-- rueda táctil circular con desplazamiento angular y respuesta háptica;
-- navegación por Música, Vídeos, Ahora suena, Favoritos y Ajustes;
-- importación de archivos de audio y vídeo desde la app Archivos;
-- copia segura de los archivos a la biblioteca privada de la aplicación;
-- reproducción con `AVPlayer`;
-- reproducción de audio en segundo plano;
-- publicación de título, artista, duración y progreso en el sistema;
+## Funciones actuales
+
+- interfaz adaptable a iPhone;
+- rueda táctil circular con navegación angular;
+- importación de MP3, M4A, AAC, WAV y otros formatos compatibles desde Archivos;
+- detección de archivos por extensión cuando iOS no informa correctamente del tipo MIME;
+- reproducción de audio y vídeo con elementos HTML5;
+- biblioteca persistente mediante IndexedDB;
 - favoritos persistentes;
-- reproductor de vídeo a pantalla completa;
-- compilación automática en GitHub Actions.
+- recuperación de los archivos al volver a abrir la PWA;
+- funcionamiento sin conexión después de la primera carga;
+- Media Session cuando el navegador la admite;
+- instalación desde Safari mediante **Añadir a pantalla de inicio**.
 
-## Requisitos
+## Abrir la aplicación
 
-- macOS compatible con una versión moderna de Xcode;
-- una versión de Xcode compatible con iOS 17 o posterior;
-- iOS 17 o posterior;
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) para generar el proyecto de Xcode.
+La PWA publicada se encuentra en:
 
-## Abrir el proyecto
+`https://popasmalinois.github.io/Orbit-player/`
 
-```bash
-brew install xcodegen
-./Scripts/bootstrap.sh
-```
+## Desarrollo
 
-El script genera `OrbitPlayer.xcodeproj` y lo abre en Xcode.
-
-También se puede ejecutar manualmente:
-
-```bash
-xcodegen generate
-open OrbitPlayer.xcodeproj
-```
-
-## Probar en iPhone
-
-1. Abre el proyecto en Xcode.
-2. Selecciona el equipo de desarrollo en **Signing & Capabilities**.
-3. Conecta el iPhone o selecciona un simulador.
-4. Ejecuta el esquema **OrbitPlayer**.
-5. Pulsa `+` para importar música o vídeos desde Archivos.
-
-## Estructura
+Los archivos de la PWA están en `Preview/`. Cada modificación de esa carpeta se publica automáticamente en la rama `gh-pages`.
 
 ```text
-OrbitPlayer/
-├── Models/          Modelos de biblioteca y navegación
-├── Services/        Importación, persistencia y reproducción
-├── Utilities/       Tema visual y cálculo de la rueda
-├── Views/           Interfaz principal, pantalla y rueda
-└── Resources/       Info.plist y catálogo de recursos
+Preview/
+├── index.html
+├── styles.css
+├── app.js
+├── sw.js
+├── manifest.webmanifest
+└── icon.svg
 ```
 
-## Próximas fases
+## Privacidad
 
-- integración con Apple Music mediante MusicKit;
-- lectura de metadatos y carátulas reales;
-- listas de reproducción;
-- búsqueda y ordenación;
-- controles remotos desde pantalla bloqueada, Centro de control y auriculares;
-- control de orientación para vídeo;
-- AirPlay y selector de ruta;
-- pruebas en dispositivo y distribución mediante TestFlight.
+Los archivos importados se almacenan localmente en el navegador mediante IndexedDB. No se envían a GitHub ni a ningún servidor.
 
-## Propiedad
+## Código nativo
 
-Orbit Player es un proyecto de titularidad privada y vocación comercial. La publicación del código en este repositorio no concede licencia de reutilización, distribución o explotación a terceros.
+El repositorio conserva un prototipo SwiftUI anterior como referencia, pero el desarrollo activo queda centrado en la PWA.
