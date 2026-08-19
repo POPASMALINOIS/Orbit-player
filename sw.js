@@ -1,10 +1,11 @@
-const CACHE_NAME = "orbit-player-pwa-2026.08.19.2";
+const CACHE_NAME = "orbit-player-pwa-2026.08.19.3";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./styles.css?v=2026.08.19.2",
-  "./app.js?v=2026.08.19.2",
-  "./manifest.webmanifest?v=2026.08.19.2",
+  "./styles.css?v=2026.08.19.3",
+  "./app.js?v=2026.08.19.3",
+  "./enhancements.js?v=2026.08.19.3",
+  "./manifest.webmanifest?v=2026.08.19.3",
   "./icon.svg"
 ];
 
