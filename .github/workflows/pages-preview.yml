@@ -26,6 +26,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Validate PWA JavaScript
+        run: |
+          node --check Preview/app.js
+          node --check Preview/enhancements.js
+
       - name: Prepare gh-pages worktree
         run: |
           git fetch origin gh-pages:gh-pages
